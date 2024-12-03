@@ -5,7 +5,7 @@ export default function Product({ key, product, setCart, setTotal }) {
   const [quantity, setQuantity] = useState(0);
 
   const addToCart = () => {
-    if (quantity === 0) {
+    if (quantity > 0) {
       setCart((prev) => [
         ...prev,
         {
@@ -14,6 +14,7 @@ export default function Product({ key, product, setCart, setTotal }) {
           price: product.price,
         },
       ]);
+
       setTotal((prevTotal) => prevTotal + product.price * quantity);
     }
   };
